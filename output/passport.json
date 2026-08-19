@@ -1,0 +1,514 @@
+[
+    {
+        "id": 1,
+        "description": "Earth work in excavation in foundation trenches or drains not exceeding 1.5 m in width or 10 Sq.m on plan including dressing of sides and ramming of bottoms, lift upto 1.5 m including getting out the excavated soil and disposal of surplus excavated soil as directed within a lead of 50 m in all types of soil except rocks.",
+        "quantity": 32.0,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Earthwork"
+    },
+    {
+        "id": 2,
+        "description": "Filling available excavated earth (excluding rock) in trenches, plinth, sides of foundations etc. in layers not exceeding 20 cm in depth consolidating each deposited layer by ramming & watering, lead upto 50 m and lift upto 1.5 m.",
+        "quantity": 12.0,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Earthwork"
+    },
+    {
+        "id": 3,
+        "description": "Filling the plinth with fine sand under floors including watering, ramming consolidating and dressing complete.",
+        "quantity": 11.0,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Sand"
+    },
+    {
+        "id": 4,
+        "description": "Surface dressing of the ground including removing vegetation, and inequalities not exceeding 15 cm deep and disposal of rubbish, lead upto 50 m and lift upto 1.5 m in soft/loose soil.",
+        "quantity": 1.4,
+        "unit": "100 Sq.m",
+        "discipline": "Civil",
+        "material_category": "Earthwork"
+    },
+    {
+        "id": 5,
+        "description": "Providing and injecting chemical emulsion for PRECONSTRUCTIONAL anti termite treatment and creating a chemical barrier under and alround the column pits, wall trenches, basement excavation, top surface of plinth filling junction of wall and floor, along the external perimetre of building, expansion joints, surroundings of pipes & conduits etc. complete (plinth area of the building at ground floor only shall be measured) with Aldrin Emulsifiable Concentrate (0.5%).",
+        "quantity": 90.6,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Chemical"
+    },
+    {
+        "id": 6,
+        "description": "Providing and laying cement concrete in footings and bases for columns, excluding the cost of centring and shuttering with 1:5:10 (1 cement : 5 coarse sand : 10 graded stone aggregate 40 mm nominal size).",
+        "quantity": 8.0,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 7,
+        "description": "Providing and laying cement concrete in retaining walls, return walls, walls (any thickness) including attached pilasters, buttresses, plinth, string courses, fillets etc. upto floor two level, excluding the cost of centring and shuttering with 1:5:10 (1 cement : 5 fine sand : 10 graded stone aggregate 40 mm nominal size).",
+        "quantity": 7.3,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 8,
+        "description": "Providing and laying upto floor two level cement concrete in string or lacing courses, parapets, copings, bed blocks anchor blocks, plain window sills and the like excluding centring and shuttering, etc. with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
+        "quantity": 0.1,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 9,
+        "description": "Providing and laying damp-proof course 40 mm thick with cement concrete 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 12.5 mm nominal size).",
+        "quantity": 14.4,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 10,
+        "description": "Applying a coat of residual petroleum bitumen of penetration 80/100 of approved quality using 1.7 Kg. per square metre on damp proof course after cleaning the surface with brushes and finally with a piece of cloth lightly soaked in kerosene oil.",
+        "quantity": 14.4,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Bitumen"
+    },
+    {
+        "id": 11,
+        "description": "Reinforced cement concrete work in suspended floors, roofs, landings and balconies upto floor two level excluding cost of centring, shuttering, finishing and reinforcement with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
+        "quantity": 11.3,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 12,
+        "description": "Reinforced cement concrete work in shelves upto floor two level excluding the cost of centering and shuttering and reinforcement with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
+        "quantity": 1.0,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 13,
+        "description": "Reinforced cement concrete work in chajjas facias and gutters upto floor two level including throating of plastered drip and moulding excluding cost of centring, shuttering, finishing and reinforcement with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
+        "quantity": 0.6,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 14,
+        "description": "Reinforced cement concrete work in lintels, beams, plinth beams and bresummers upto floor two level excluding the cost of centring, shuttering, finishing and reinforcement with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
+        "quantity": 1.7,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 15,
+        "description": "Reinforced cement concrete work in columns, pillars, piers, abutments, posts and struts upto floor two level excluding the cost of centring, shuttering, finishing and reinforcement with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
+        "quantity": 0.1,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 16,
+        "description": "Centring and shuttering including strutting, proping etc. and removal of form work for: i) Suspended floors, roofs, landings balconies and chajjas (108.0 Sq.m); ii) Shelves (17.0 Sq.m); iii) Lintels, beams, plinth beams, girders bressumers and cantilever (19.0 Sq.m); iv) Columns, pillars, posts and struts (2.0 Sq.m); v) Vertical and horizontal fins individually or forming box louvers hand and facias (9.0 Sq.m). Total Area: 155.0 Sq.m.",
+        "quantity": 155.0,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Formwork"
+    },
+    {
+        "id": 17,
+        "description": "Reinforcement for RCC work including bending binding and placing in position complete: i) Mild steel and medium tensile steel bars (100.0 Kg); ii) Cold twisted bars (1375.0 Kg / 1500.0 Kg for Seismic Zone V).",
+        "quantity": 1475.0,
+        "unit": "Kg.",
+        "discipline": "Civil",
+        "material_category": "Steel"
+    },
+    {
+        "id": 18,
+        "description": "Providing and laying upto floor two level RCC in string courses, bands, copings, bed plates, anchor blocks, plain window sills and the like excluding the cost of centering, shuttering, finishing and reinforcement with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
+        "quantity": 0.8,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 19,
+        "description": "Brick work with bricks of class designation in foundation and plinth in cement mortar 1:6 (1 cement : 6 coarse sand).",
+        "quantity": 17.0,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Brick"
+    },
+    {
+        "id": 20,
+        "description": "Brick work with bricks of class designation in super structure above plinth upto floor two level in cement mortar 1:6 (1 cement : 6 coarse sand).",
+        "quantity": 40.3,
+        "unit": "Cu.m",
+        "discipline": "Civil",
+        "material_category": "Brick"
+    },
+    {
+        "id": 21,
+        "description": "Brick work 7 cm thick with bricks of class designation in super structure upto floor two level in cement mortar 1:3 (1 cement : 3 coarse sand).",
+        "quantity": 0.9,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Brick"
+    },
+    {
+        "id": 22,
+        "description": "Half brick masonry with bricks of class designation in foundation & plinth in cement mortar 1:4 (1 cement : 4 coarse sand).",
+        "quantity": 4.8,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Brick"
+    },
+    {
+        "id": 23,
+        "description": "Half brick masonry with bricks of class designation in super structure upto floor two level in cement mortar 1:4 (1 cement : 4 coarse sand).",
+        "quantity": 18.0,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Brick"
+    },
+    {
+        "id": 24,
+        "description": "Providing wood work in frames of doors, windows, clerestory windows and other frames, wrought framed and fixed in position.",
+        "quantity": 3.5,
+        "unit": "10 Cubic decimetre",
+        "discipline": "Architecture",
+        "material_category": "Wood"
+    },
+    {
+        "id": 25,
+        "description": "Providing and fixing 35 mm thick battended and framed door shutters of wood including bright finished or/and black enamelled MS butt hinges with necessary screws.",
+        "quantity": 18.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Wood"
+    },
+    {
+        "id": 26,
+        "description": "Providing and fixing 25 mm thick flush door (for cupboard) shutters core of block board construction with frame of 1st class hard wood and well matched 1st class teak ply veneering with vertical grains or cross bands and face veneer on one face and commercial ply veneering with vertical grains or cross bands and face veneer on other face of shutters, including nickel plated bright finished MS piano hinges with necessary screws.",
+        "quantity": 4.7,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Wood"
+    },
+    {
+        "id": 27,
+        "description": "Providing 50x50x50 mm 2nd class Teak wood plugs including cutting brick work and fixing in cement mortar 1:3 (1 cement : 3 fine sand) and making good the walls etc.",
+        "quantity": 20.0,
+        "unit": "each",
+        "discipline": "Architecture",
+        "material_category": "Wood"
+    },
+    {
+        "id": 28,
+        "description": "Providing and fixing M.S.oxidised fan light ventilator catch with necessary screws etc. complete.",
+        "quantity": 6.0,
+        "unit": "each",
+        "discipline": "Architecture",
+        "material_category": "Hardware"
+    },
+    {
+        "id": 29,
+        "description": "Providing and fixing 90 mm oxidised M.S. hasp and staple (safety type) with necessary screws etc. complete.",
+        "quantity": 2.0,
+        "unit": "each",
+        "discipline": "Architecture",
+        "material_category": "Hardware"
+    },
+    {
+        "id": 30,
+        "description": "Providing and fixing aluminium sliding door bolts 300 x 16 mm anodised transparent or dyed to required colour or shade with nuts and screws etc. complete.",
+        "quantity": 10.0,
+        "unit": "Each",
+        "discipline": "Architecture",
+        "material_category": "Aluminium"
+    },
+    {
+        "id": 31,
+        "description": "Providing and fixing aluminium tower bolts anodised transparent or dyed to required colour or shade with necessary screws etc. complete: i) 200 x 10 mm (10 Each); ii) 100 x 10 mm (8 Each). Total: 18 Each.",
+        "quantity": 18.0,
+        "unit": "Each",
+        "discipline": "Architecture",
+        "material_category": "Aluminium"
+    },
+    {
+        "id": 32,
+        "description": "Providing and fixing aluminium handles anodised transparent or dyed to required colour or shade with necessary screws etc. complete: i) 100 mm (20 Each); ii) 75 mm (4 Each). Total: 24 Each.",
+        "quantity": 24.0,
+        "unit": "Each",
+        "discipline": "Architecture",
+        "material_category": "Aluminium"
+    },
+    {
+        "id": 33,
+        "description": "Providing and fixing aluminium hanging floor door stopper anodised transparent or dyed to required colour & shade with necessary screws etc. complete.",
+        "quantity": 10.0,
+        "unit": "Each",
+        "discipline": "Architecture",
+        "material_category": "Aluminium"
+    },
+    {
+        "id": 34,
+        "description": "Providing and fixing steel glazed doors, windows and ventilators of standard rolled steel sections, joints mitred and welded with 15x3 mm lugs, 10 cm long, with steel lugs embedded in cement concrete blocks 15x10x10 cm of 1:3:6 or with wooden plugs and screws or rawl plugs and screws or with fixing clips or with bolts and nuts as required, including providing and fixing of (Pin Head) 3mm thick glass panes with glazing clips and special metal sash putty of approved make complete including applying a priming coat of approved steel primer; excluding the cost of metal beading and other fitting except necessary hinges or pivots as required: i) Windows - side hung (11.3 Sq.m); ii) Ventilators - centre hung (1.0 Sq.m). Total: 12.3 Sq.m.",
+        "quantity": 12.3,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Steel"
+    },
+    {
+        "id": 35,
+        "description": "Providing and fixing oxidised mild steel casement window fastners of minimum weight 200 grams to side hung steel windows with necessary welding and machine screws etc. complete.",
+        "quantity": 21.0,
+        "unit": "Each",
+        "discipline": "Architecture",
+        "material_category": "Steel"
+    },
+    {
+        "id": 36,
+        "description": "Providing and fixing aluminium casement stays anodised transparent or dyed to required colour and shade with necessary welding and machine screws etc. complete.",
+        "quantity": 21.0,
+        "unit": "Each",
+        "discipline": "Architecture",
+        "material_category": "Aluminium"
+    },
+    {
+        "id": 37,
+        "description": "Providing and welding 20x4 mm M S Guard Flats 10cm c/c in steel windows of standard rolled steel section including a coat of steel primer as per drawing and specification complete in all respect.",
+        "quantity": 66.0,
+        "unit": "Kg.",
+        "discipline": "Architecture",
+        "material_category": "Steel"
+    },
+    {
+        "id": 38,
+        "description": "Providing and fixing T - Iron frames for doors, windows and ventilators of mild steel Tee - sections, joints mitred and welded with 15x3 mm lugs 10 cm long embedded in cement concrete blocks 15x10x10 cm of 1:3:6 or with wooden plugs and screws or rawl plugs and screws or with fixing clips or with bolts and nuts as required, including fixing of necessary butt hinges and screws and applying a priming coat of approved steel primer.",
+        "quantity": 187.0,
+        "unit": "Kg.",
+        "discipline": "Architecture",
+        "material_category": "Steel"
+    },
+    {
+        "id": 39,
+        "description": "Providing and fixing MS fan clamp type I of 16 mm dia MS bar bent to shape with hooked ends in RCC slabs during laying including painting the exposed portion of loop, all as per standard design complete.",
+        "quantity": 5.0,
+        "unit": "Each",
+        "discipline": "MEP",
+        "material_category": "Steel"
+    },
+    {
+        "id": 40,
+        "description": "40 mm thick cement concrete flooring 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20.0 mm nominal size) finished with a floating coat of neat cement including cement slurry, rounding off edges and strips etc. but excluding the cost of nosing of steps etc. complete.",
+        "quantity": 68.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 41,
+        "description": "18 mm thick cement plaster skirting (upto 30 cm height) with cement mortar 1:3 (1 cement : 3 coarse sand) finished with a floating coat of neat cement including rounding of junctions with floors.",
+        "quantity": 11.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Mortar"
+    },
+    {
+        "id": 42,
+        "description": "40 mm thick marble chips flooring, rubbed and polished to granolithic finish, under layer 31 mm thick cement concrete 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 12.5 mm nominal size) and top layer 9 mm thick with white black, chocolate, grey yellow or Baroda green marble chips of sizes from 4 mm to 7 mm nominal size laid in cement marble powder mix 3:1 (3 cement : 1 marble powder) by weight in proportion of 4:7 (4 cement marble powder mix : 7 marble chips) by volume including cement slurry etc., complete using dark shade pigment with ordinary cement.",
+        "quantity": 9.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Terrazzo"
+    },
+    {
+        "id": 43,
+        "description": "Add or deduct for providing and fixing glass strips in joints of terrazzo/cement concrete floors- 40 mm wide and 6 mm thick.",
+        "quantity": 18.0,
+        "unit": "Mtr.",
+        "discipline": "Architecture",
+        "material_category": "Glass"
+    },
+    {
+        "id": 44,
+        "description": "Painting top of roofs with bitumen of approved quality at 17 Kg. per 10 square metre impregnated with a coat of coarse sand at 3/2 60 dm3 per 10 m2 including cleaning the slab surface with brushes and finally with a piece of cloth lightly soaked in kerosene oil complete with residual type petroleum bitumen of penetration 80/100.",
+        "quantity": 65.0,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Bitumen"
+    },
+    {
+        "id": 45,
+        "description": "Lime concrete terracing on roofs, average thickness 10 cm laid to fall with 25 mm nominal size brick aggregate and 50% lime mortar 1:2 (1 lime putty : 2 surkhi) rammed and finished with gur and belgiri treatment complete and covered with flat FPS brick tiles of class designation 100 grouted with cement mortar 1:3 (1 cement : 3 fine sand) mixed with 5% crude oil by wt. of cement, over 12 mm layer of cement mortar 1:3 (1 cement : 3 fine sand) and finished neat.",
+        "quantity": 65.0,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 46,
+        "description": "Providing and laying 25 mm thick burnt clay tiles 250x250x25 mm of approved quality over roofs with 1 cm side joints grouted with CM 1:3 (1 cement : 3 fine sand) over 15 mm thick bed of cement mortar 1:3 (1 cement : 3 fine sand) and finished neat.",
+        "quantity": 32.0,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Tiles"
+    },
+    {
+        "id": 47,
+        "description": "Providing gola 15x15 cm in size in cement concrete mix 1:3:6 (1 cement : 3 coarse sand : 6 graded stone aggregate 20 mm nominal size) covered with brick tiles in CM 1:3 (1 cement : 3 coarse sand) as per drawing and specifications complete in all respects.",
+        "quantity": 46.0,
+        "unit": "Mtr.",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 48,
+        "description": "Making khurras 45 x 45 cm with average minimum thickness of 5 cm cement concrete 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size) over PVC sheet 1m x 1m x 400 micron, finished with 12 cement plaster 1:3 (1 cement : 3 coarse sand) and a coat of neat cement rounding the edges and making and finishing the outlet complete.",
+        "quantity": 3.0,
+        "unit": "Each",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    },
+    {
+        "id": 49,
+        "description": "Providing and fixing on wallface 100 mm diameter CI rain water pipe including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand).",
+        "quantity": 10.0,
+        "unit": "Mtr.",
+        "discipline": "MEP",
+        "material_category": "Cast Iron"
+    },
+    {
+        "id": 50,
+        "description": "Providing and fixing 100 mm dia MS holderbat clamps of approved design to CI or SCI rain water pipes embedded in and including cement concrete blocks 10 x 10 x 10 cm of 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size) and cost of cutting holes and making good the walls etc.",
+        "quantity": 9.0,
+        "unit": "Each",
+        "discipline": "MEP",
+        "material_category": "Steel"
+    },
+    {
+        "id": 51,
+        "description": "Providing and fixing on wall face CI accessories for rain water pipes including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand): i) CI plain head 100 mm dia (3 Each); ii) CI plain shoe - 100 mm dia (3 Each); iii) CI plain bend - 100 mm dia (3 Each). Total: 9 Each.",
+        "quantity": 9.0,
+        "unit": "Each",
+        "discipline": "MEP",
+        "material_category": "Cast Iron"
+    },
+    {
+        "id": 52,
+        "description": "12 mm cement plaster of mix 1:6 (1 cement : 6 fine sand).",
+        "quantity": 220.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Mortar"
+    },
+    {
+        "id": 53,
+        "description": "15 mm cement plaster on the rough side of single or half brick wall of mix 1:6 (1 cement : 6 fine sand).",
+        "quantity": 220.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Mortar"
+    },
+    {
+        "id": 54,
+        "description": "6 mm cement plaster of mix 1:3 (1 cement : 3 fine sand) finished with a floating coat of neat cement and thick coat of lime wash on top of walls when dry for bearing of RCC slabs and beams.",
+        "quantity": 19.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Mortar"
+    },
+    {
+        "id": 55,
+        "description": "18 mm plastering with terrazzo finish for dado rubbed and polished complete, under layer 12 mm thick cement plaster 1:3 (1 cement : 3 coarse sand) and top layer 6 mm thick white, black, chocolate, grey, yellow or Baroda green marble chips of 3 mm and down size laid in cement marble powder mix 3:1 (3 cement : 1 marble powder) by weight in proportion of 4:7 (4 cement marble powder mix : 7 marble chips) by volume.",
+        "quantity": 20.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Terrazzo"
+    },
+    {
+        "id": 56,
+        "description": "Finishing and plastering the exposed surface of RCC with cement mortar 1:3.",
+        "quantity": 155.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Mortar"
+    },
+    {
+        "id": 57,
+        "description": "White washing with lime to give an even shade on new work (three or more coats).",
+        "quantity": 285.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Lime"
+    },
+    {
+        "id": 58,
+        "description": "Colour washing such as green, blue or buff to give an even shade on new work (two or more coats) with a base coat of white washing with lime.",
+        "quantity": 285.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Paint"
+    },
+    {
+        "id": 59,
+        "description": "Applying priming coat with ready mixed pink or gray primer of approved brand and manufacture on wood work (hard and soft wood).",
+        "quantity": 47.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Paint"
+    },
+    {
+        "id": 60,
+        "description": "Applying priming coat with readymixed zinc chromate yellow primer of approved brand and manufacture on steelwork (second coat).",
+        "quantity": 30.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Paint"
+    },
+    {
+        "id": 61,
+        "description": "Painting (two or more coats) on rain water, soil, waste and vent pipes and fittings with black anticorrosive bitumastic paint of approved brand and manufacture over and including a priming coat of ready mixed zinc chromate yellow primer on new work on 100 mm diameter pipes.",
+        "quantity": 10.0,
+        "unit": "Mtr.",
+        "discipline": "MEP",
+        "material_category": "Paint"
+    },
+    {
+        "id": 62,
+        "description": "Painting with synthetic enamel paint of approved brand and manufacture to give an even shade in two or more coats on new work in black or chocolate shade over an under coat of suitable shade with ordinary paint of approved brand and manufacture.",
+        "quantity": 77.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Paint"
+    },
+    {
+        "id": 63,
+        "description": "French spirit polishing two or more coats on new works including a coat of wood filler.",
+        "quantity": 13.0,
+        "unit": "Sq.m",
+        "discipline": "Architecture",
+        "material_category": "Polish"
+    },
+    {
+        "id": 64,
+        "description": "Making plinth protection 50 mm thick of cement concrete 1:3:6 (1 cement : 3 coarse sand : 6 graded stone aggregate 20 mm nominal size) over 75 mm bed of dry brick ballast 40 mm nominal size well rammed and consolidated and grouted with fine sand, including finishing the top smooth.",
+        "quantity": 34.6,
+        "unit": "Sq.m",
+        "discipline": "Civil",
+        "material_category": "Concrete"
+    }
+]
