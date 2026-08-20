@@ -99,7 +99,7 @@ def process_and_save(data, template_path):
     wb = openpyxl.load_workbook(str(template_path))
     ws = wb.active
     
-    # 🧹 THE ERASER: Physically delete the 3 example rows from the template!
+    # 🧹 THE ERASER
     ws.delete_rows(4, 3)
             
     start_row = 4
@@ -124,7 +124,6 @@ def process_and_save(data, template_path):
         for json_key, col_idx in column_mapping.items():
             val = item.get(json_key)
             
-            # 🛡️ THE FIX: Convert AI lists into text strings so Excel doesn't crash!
             if isinstance(val, list):
                 val = ", ".join([str(v) for v in val])
             
@@ -133,7 +132,6 @@ def process_and_save(data, template_path):
             else:
                 ws.cell(row=current_row, column=col_idx).value = str(val)
                 
-        # AMBER Carbon calculation
         try:
             qty = float(item.get("quantity", 0))
         except (ValueError, TypeError):
@@ -155,25 +153,44 @@ def process_and_save(data, template_path):
     return pd.DataFrame(line_items)
 
 # ============================================================================
-# 5. VISUALIZATION
+# 5. VISUALIZATION (UPGRADED)
 # ============================================================================
 def create_visualization(df):
     if df.empty or "material_category" not in df.columns:
         return
         
-    df_chart = df[df["material_category"].notna()]
-    df_chart = df_chart[df_chart["material_category"] != "Not Specified"]
+    # Clean the data: String, strip spaces, Title Case
+    df["material_category_clean"] = df["material_category"].astype(str).str.strip().str.title()
     
-    plt.figure(figsize=(10, 6))
-    mat_counts = df_chart["material_category"].value_counts()
+    junk_values = ["Not Specified", "None", "Null", "Nan", ""]
+    df_chart = df[~df["material_category_clean"].isin(junk_values)]
+    
+    if df_chart.empty:
+        return
+        
+    mat_counts = df_chart["material_category_clean"].value_counts()
     
     if not mat_counts.empty:
-        sns.barplot(x=mat_counts.values, y=mat_counts.index, palette="viridis")
-        plt.title("Material Distribution across BoQ Line Items", fontsize=14)
+        fig_height = max(6, len(mat_counts) * 0.6) 
+        plt.figure(figsize=(10, fig_height))
+        
+        sns.barplot(
+            x=mat_counts.values, 
+            y=mat_counts.index, 
+            palette="viridis",
+            hue=mat_counts.index,
+            legend=False
+        )
+        
+        plt.title("Material Distribution across BoQ Line Items", fontsize=14, fontweight="bold")
         plt.xlabel("Number of Line Items", fontsize=12)
         plt.ylabel("Material Category", fontsize=12)
+        
+        for i, v in enumerate(mat_counts.values):
+            plt.text(v + 0.1, i, str(v), color='black', va='center', fontweight='bold')
+            
         plt.tight_layout()
-        plt.savefig(str(OUTPUT_DIR / "visualization.png"))
+        plt.savefig(str(OUTPUT_DIR / "visualization.png"), dpi=300)
     plt.close()
 
 if __name__ == "__main__":
