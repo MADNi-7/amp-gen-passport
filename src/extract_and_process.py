@@ -153,26 +153,44 @@ def process_and_save(data, template_path):
     return pd.DataFrame(line_items)
 
 # ============================================================================
-# 5. VISUALIZATION (UPGRADED)
+# 5. VISUALIZATION (SMART GROUPING)
 # ============================================================================
 def create_visualization(df):
     if df.empty or "material_category" not in df.columns:
         return
         
-    # Clean the data: String, strip spaces, Title Case
-    df["material_category_clean"] = df["material_category"].astype(str).str.strip().str.title()
+    df["raw_cat"] = df["material_category"].astype(str).str.strip()
     
-    junk_values = ["Not Specified", "None", "Null", "Nan", ""]
-    df_chart = df[~df["material_category_clean"].isin(junk_values)]
+    # Smart Grouper: Maps granular AI categories into standard BoQ buckets
+    def group_category(cat):
+        c = cat.lower()
+        if any(x in c for x in ['concrete', 'formwork']): return 'Concrete & Formwork'
+        if 'brick' in c: return 'Brickwork'
+        if 'plaster' in c: return 'Plastering'
+        if any(x in c for x in ['paint', 'polish', 'wash']): return 'Painting & Finishes'
+        if any(x in c for x in ['door', 'window']): return 'Doors & Windows'
+        if any(x in c for x in ['hard', 'fitting', 'iron', 'clamp']): return 'Hardware & Fittings'
+        if 'roof' in c: return 'Roofing'
+        if any(x in c for x in ['floor', 'dado', 'terrazzo', 'tile']): return 'Flooring & Tiles'
+        if 'steel' in c: return 'Steel & Metals'
+        if any(x in c for x in ['timber', 'wood']): return 'Timber'
+        if any(x in c for x in ['pipe', 'drain', 'plumb', 'rainwater']): return 'Plumbing & Drainage'
+        if any(x in c for x in ['water', 'damp', 'bitumen']): return 'Waterproofing'
+        if any(x in c for x in ['earth', 'sand', 'aggregate', 'soil']): return 'Earthworks & Aggregates'
+        if c in ['not specified', 'none', 'null', 'nan', '']: return None
+        return 'Other'
+
+    df["mapped_category"] = df["raw_cat"].apply(group_category)
+    df_chart = df.dropna(subset=["mapped_category"])
     
     if df_chart.empty:
         return
         
-    mat_counts = df_chart["material_category_clean"].value_counts()
+    mat_counts = df_chart["mapped_category"].value_counts()
     
     if not mat_counts.empty:
-        fig_height = max(6, len(mat_counts) * 0.6) 
-        plt.figure(figsize=(10, fig_height))
+        # Standardized professional chart size
+        plt.figure(figsize=(10, 7))
         
         sns.barplot(
             x=mat_counts.values, 
@@ -182,20 +200,15 @@ def create_visualization(df):
             legend=False
         )
         
-        plt.title("Material Distribution across BoQ Line Items", fontsize=14, fontweight="bold")
-        plt.xlabel("Number of Line Items", fontsize=12)
-        plt.ylabel("Material Category", fontsize=12)
+        plt.title("Material Distribution by Major Category", fontsize=16, fontweight="bold", pad=15)
+        plt.xlabel("Total Line Items", fontsize=12, labelpad=10)
+        plt.ylabel("Construction Bucket", fontsize=12, labelpad=10)
         
+        # Add exact numbers to bars
         for i, v in enumerate(mat_counts.values):
             plt.text(v + 0.1, i, str(v), color='black', va='center', fontweight='bold')
             
+        sns.despine() # Removes top and right borders for a cleaner look
         plt.tight_layout()
-        plt.savefig(str(OUTPUT_DIR / "visualization.png"), dpi=300)
+        plt.savefig(str(OUTPUT_DIR / "visualization.png"), dpi=300, bbox_inches="tight")
     plt.close()
-
-if __name__ == "__main__":
-    pdf_file = find_file("BoQ_CBRI_Principals_Residence.pdf")
-    template_file = find_file("AMP_Passport_Template.xlsx")
-    extracted_data = extract_data_from_pdf(pdf_file)
-    passport_df = process_and_save(extracted_data, template_file)
-    create_visualization(passport_df)
