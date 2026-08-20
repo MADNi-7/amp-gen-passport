@@ -9,6 +9,7 @@ This repository contains the automated pipeline for extracting Material Passport
 - **Building Metadata Extraction (Bonus B3):** Automatically isolates and outputs project metadata into `building_meta.json`.
 - **Visualization:** Programmatically generates material distribution charts (`visualization.png`).
 
+Live Demo: https://amp-gen-passport-uhr9sy2rxzm8jfbmf5p4yt.streamlit.app/
 ---
 
 ## Repository Structure
