@@ -123,10 +123,15 @@ def process_and_save(data, template_path):
         current_row = start_row + idx
         for json_key, col_idx in column_mapping.items():
             val = item.get(json_key)
+            
+            # 🛡️ THE FIX: Convert AI lists into text strings so Excel doesn't crash!
+            if isinstance(val, list):
+                val = ", ".join([str(v) for v in val])
+            
             if val is None or str(val).strip() == "" or val == "null":
                 ws.cell(row=current_row, column=col_idx).value = "Not Specified"
             else:
-                ws.cell(row=current_row, column=col_idx).value = val
+                ws.cell(row=current_row, column=col_idx).value = str(val)
                 
         # AMBER Carbon calculation
         try:
@@ -134,7 +139,7 @@ def process_and_save(data, template_path):
         except (ValueError, TypeError):
             qty = 0
             
-        category = item.get("material_category", "")
+        category = str(item.get("material_category", ""))
         if category in EPD_DATABASE:
             carbon_factor = EPD_DATABASE[category]["carbon_factor"]
             ws.cell(row=current_row, column=25).value = qty * carbon_factor
