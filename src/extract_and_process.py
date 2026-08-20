@@ -44,9 +44,6 @@ API_KEYS = [
 ]
 API_KEYS = [k for k in API_KEYS if k]
 
-if not API_KEYS:
-    raise ValueError("No Gemini API keys found! Please add GEMINI_API_KEY to your .env file.")
-
 MODELS = [
     "gemini-3.6-flash",
     "gemini-3.7-flash",
@@ -68,51 +65,16 @@ EPD_DATABASE = {
 def extract_data_from_pdf(pdf_path):
     prompt = """
     You are an expert Quantity Surveyor. Analyze this scanned Bill of Quantities (BoQ) and extract:
-    1. 'metadata': The building block metadata from Page 1 (Project name, location, date, etc.)
-    2. 'line_items': An array of exactly 64 line items. For each item, extract the following fields (use null if not explicitly found or inferable):
-       - 'gmap_id': (String) GMAP Id (leave null)
-       - 'id': (String) BOQ Item No.
-       - 'article_number': (String) Article Number
-       - 'external_db_id': (String) External DB Id
-       - 'description': (String) Full description of the work/material
-       - 'floor_section': (String) Floor / Section
-       - 'discipline': (String) Infer if this is 'Civil', 'MEP', 'Architecture', etc.
-       - 'material_product': (String) Material / Product
-       - 'all_materials_detected': (String) All Materials Detected
-       - 'material_category': (String) Infer the primary material (e.g., 'Concrete', 'Steel', 'Brick')
-       - 'material_confidence': (String) Material Confidence
-       - 'grade': (String) Grade
-       - 'mix_ratio': (String) Mix Ratio (e.g., 1:4:8)
-       - 'quantity': (Number) Original Quantity
-       - 'unit': (String) Original Unit (e.g., Cum, Sqm, Kg)
-       - 'volume_m3': (Number) Volume (m³)
-       - 'area_m2': (Number) Area (m²)
-       - 'length_m': (Number) Length (m)
-       - 'weight_kg': (Number) Weight (kg)
-       - 'count_nos': (Number) Count (Nos)
-       - 'derived_quantity': (Number) Derived Quantity
-       - 'derived_quantity_unit': (String) Derived Quantity Unit
-       - 'derived_quantity_basis': (String) Derived Quantity Basis
-       - 'schedule': (String) Schedule (DSR/SOR)
-       - 'schedule_item_code': (String) Schedule Item Code
-       - 'standard_code_reference': (String) Standard / Code Reference
-       - 'classification': (String) Classification (Matched)
-       - 'length_mm': (Number) Length (mm)
-       - 'width_mm': (Number) Width (mm)
-       - 'height_mm': (Number) Height (mm)
-       - 'thickness_mm': (Number) Thickness (mm)
-       - 'depth_mm': (Number) Depth (mm)
-       - 'diameter_mm': (Number) Diameter (mm)
-       - 'unit_rate': (Number) Unit Rate
-       - 'total_cost': (Number) Total Cost
-       - 'currency': (String) Currency
-       - 'comment': (String) Comment
+    1. 'metadata': The building block metadata from Page 1.
+    2. 'line_items': An array of exactly 64 line items.
        
-    Output STRICTLY in valid JSON format without markdown blocks.
+    Output STRICTLY in valid JSON format without markdown blocks. Use null for missing fields. Include: gmap_id, id, article_number, external_db_id, description, floor_section, discipline, material_product, all_materials_detected, material_category, material_confidence, grade, mix_ratio, quantity, unit, volume_m3, area_m2, length_m, weight_kg, count_nos, derived_quantity, derived_quantity_unit, derived_quantity_basis, schedule, schedule_item_code, standard_code_reference, classification, length_mm, width_mm, height_mm, thickness_mm, depth_mm, diameter_mm, unit_rate, total_cost, currency, comment.
     """
-    key_idx, model_idx = 0, 0
+    key_idx = 0
+    model_idx = 0
     while True:
-        curr_key, curr_model = API_KEYS[key_idx], MODELS[model_idx]
+        curr_key = API_KEYS[key_idx]
+        curr_model = MODELS[model_idx]
         genai.configure(api_key=curr_key)
         try:
             sample_file = genai.upload_file(path=str(pdf_path))
@@ -120,7 +82,7 @@ def extract_data_from_pdf(pdf_path):
             response = model.generate_content([sample_file, prompt], request_options={"timeout": 600})
             raw_json = response.text.strip().removeprefix('```json').removesuffix('```')
             return json.loads(raw_json)
-        except Exception as e:
+        except Exception:
             key_idx = (key_idx + 1) % len(API_KEYS)
             model_idx = (model_idx + 1) % len(MODELS)
             time.sleep(15)
@@ -137,10 +99,8 @@ def process_and_save(data, template_path):
     wb = openpyxl.load_workbook(str(template_path))
     ws = wb.active
     
-    # 🧹 ERASER: Completely wipe rows 4 through 10 to delete all template examples
-    for r in range(4, 15):
-        for c in range(1, ws.max_column + 1):
-            ws.cell(row=r, column=c).value = None
+    # 🧹 THE ERASER: Physically delete the 3 example rows from the template!
+    ws.delete_rows(4, 3)
             
     start_row = 4
     
@@ -195,17 +155,20 @@ def process_and_save(data, template_path):
 def create_visualization(df):
     if df.empty or "material_category" not in df.columns:
         return
-    # Clean out any stray 'Not Specified' from the charts
-    df_chart = df[df["material_category"] != "Not Specified"]
+        
+    df_chart = df[df["material_category"].notna()]
+    df_chart = df_chart[df_chart["material_category"] != "Not Specified"]
     
     plt.figure(figsize=(10, 6))
     mat_counts = df_chart["material_category"].value_counts()
-    sns.barplot(x=mat_counts.values, y=mat_counts.index, palette="viridis")
-    plt.title("Material Distribution across BoQ Line Items", fontsize=14)
-    plt.xlabel("Number of Line Items", fontsize=12)
-    plt.ylabel("Material Category", fontsize=12)
-    plt.tight_layout()
-    plt.savefig(str(OUTPUT_DIR / "visualization.png"))
+    
+    if not mat_counts.empty:
+        sns.barplot(x=mat_counts.values, y=mat_counts.index, palette="viridis")
+        plt.title("Material Distribution across BoQ Line Items", fontsize=14)
+        plt.xlabel("Number of Line Items", fontsize=12)
+        plt.ylabel("Material Category", fontsize=12)
+        plt.tight_layout()
+        plt.savefig(str(OUTPUT_DIR / "visualization.png"))
     plt.close()
 
 if __name__ == "__main__":
