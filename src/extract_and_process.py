@@ -110,36 +110,19 @@ def extract_data_from_pdf(pdf_path):
        
     Output STRICTLY in valid JSON format without markdown blocks.
     """
-    
-    key_idx = 0
-    model_idx = 0
-    
+    key_idx, model_idx = 0, 0
     while True:
-        curr_key = API_KEYS[key_idx]
-        curr_model = MODELS[model_idx]
-        
+        curr_key, curr_model = API_KEYS[key_idx], MODELS[model_idx]
         genai.configure(api_key=curr_key)
-        print(f"\n[Attempt] Model: {curr_model} | Key: {key_idx + 1}/{len(API_KEYS)}")
-        
         try:
-            print(f"  -> Uploading PDF ({pdf_path.name}) to Gemini...")
             sample_file = genai.upload_file(path=str(pdf_path))
             model = genai.GenerativeModel(curr_model)
-            
-            print("  -> Extracting ALL 37 green columns (timeout set to 600s)...")
             response = model.generate_content([sample_file, prompt], request_options={"timeout": 600})
-            
             raw_json = response.text.strip().removeprefix('```json').removesuffix('```')
-            data = json.loads(raw_json)
-            
-            print("✓ Extraction successful!")
-            return data
-
+            return json.loads(raw_json)
         except Exception as e:
-            print(f"✗ Extraction failed: {type(e).__name__} - {e}")
             key_idx = (key_idx + 1) % len(API_KEYS)
             model_idx = (model_idx + 1) % len(MODELS)
-            print("  -> Holding for 15 seconds to avoid rate limits before resuming...\n")
             time.sleep(15)
 
 # ============================================================================
@@ -150,13 +133,17 @@ def process_and_save(data, template_path):
         json.dump(data.get("metadata", {}), f, indent=4)
         
     line_items = data.get("line_items", [])
-    print(f"Filling official AMP Passport Template with {len(line_items)} items...")
     
     wb = openpyxl.load_workbook(str(template_path))
     ws = wb.active
-    start_row = 6
     
-    # Automated Mapping for all 37 Green Columns
+    # 🧹 ERASER: Completely wipe rows 4 through 10 to delete all template examples
+    for r in range(4, 15):
+        for c in range(1, ws.max_column + 1):
+            ws.cell(row=r, column=c).value = None
+            
+    start_row = 4
+    
     column_mapping = {
         'gmap_id': 1, 'id': 2, 'article_number': 3, 'external_db_id': 4,
         'description': 5, 'floor_section': 6, 'discipline': 7, 
@@ -174,8 +161,6 @@ def process_and_save(data, template_path):
     
     for idx, item in enumerate(line_items):
         current_row = start_row + idx
-        
-        # Fill ALL Green columns with "Not Specified" fallback
         for json_key, col_idx in column_mapping.items():
             val = item.get(json_key)
             if val is None or str(val).strip() == "" or val == "null":
@@ -183,7 +168,7 @@ def process_and_save(data, template_path):
             else:
                 ws.cell(row=current_row, column=col_idx).value = val
                 
-        # AMBER Carbon calculation (Columns 25, 26)
+        # AMBER Carbon calculation
         try:
             qty = float(item.get("quantity", 0))
         except (ValueError, TypeError):
@@ -192,12 +177,9 @@ def process_and_save(data, template_path):
         category = item.get("material_category", "")
         if category in EPD_DATABASE:
             carbon_factor = EPD_DATABASE[category]["carbon_factor"]
-            source = EPD_DATABASE[category]["source"]
-            
             ws.cell(row=current_row, column=25).value = qty * carbon_factor
             ws.cell(row=current_row, column=26).value = carbon_factor
-            # Overwrite 'comment' with EPD source if applicable
-            ws.cell(row=current_row, column=50).value = f"EPD Source: {source}"
+            ws.cell(row=current_row, column=50).value = f"EPD Source: {EPD_DATABASE[category]['source']}"
             
     excel_out = OUTPUT_DIR / "passport_filled.xlsx"
     wb.save(str(excel_out))
@@ -205,7 +187,6 @@ def process_and_save(data, template_path):
     with open(OUTPUT_DIR / "passport.json", "w", encoding="utf-8") as f:
         json.dump(line_items, f, indent=4)
         
-    print(f"✓ Saved: {excel_out}")
     return pd.DataFrame(line_items)
 
 # ============================================================================
@@ -214,8 +195,11 @@ def process_and_save(data, template_path):
 def create_visualization(df):
     if df.empty or "material_category" not in df.columns:
         return
+    # Clean out any stray 'Not Specified' from the charts
+    df_chart = df[df["material_category"] != "Not Specified"]
+    
     plt.figure(figsize=(10, 6))
-    mat_counts = df["material_category"].value_counts()
+    mat_counts = df_chart["material_category"].value_counts()
     sns.barplot(x=mat_counts.values, y=mat_counts.index, palette="viridis")
     plt.title("Material Distribution across BoQ Line Items", fontsize=14)
     plt.xlabel("Number of Line Items", fontsize=12)
@@ -223,13 +207,10 @@ def create_visualization(df):
     plt.tight_layout()
     plt.savefig(str(OUTPUT_DIR / "visualization.png"))
     plt.close()
-    print(f"✓ Visualization saved")
 
 if __name__ == "__main__":
     pdf_file = find_file("BoQ_CBRI_Principals_Residence.pdf")
     template_file = find_file("AMP_Passport_Template.xlsx")
-    
     extracted_data = extract_data_from_pdf(pdf_file)
     passport_df = process_and_save(extracted_data, template_file)
     create_visualization(passport_df)
-    print("\n All tasks completed successfully!")
