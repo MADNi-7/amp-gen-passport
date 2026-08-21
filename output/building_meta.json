@@ -1,12 +1,13 @@
 {
-    "project_name": "CENTRAL BUILDING RESEARCH INSTITUTE, ROORKEE (U.P.)",
-    "work_name": "Bill of Quantities for Principal's Residence (General-Modified)",
+    "project_name": "Principal's Residence (General-Modified)",
+    "organization": "CENTRAL BUILDING RESEARCH INSTITUTE ROORKEE (U.P.)",
+    "document_type": "Bill of Quantities",
     "schedule": "Schedule 'A'",
-    "dsr_reference_year": "1989",
-    "depth_of_foundation_m": 0.6,
-    "plinth_height_m": 0.45,
-    "plinth_area_sqm": 90.6,
+    "dsr_year": "1989",
+    "depth_of_foundation": "0.60 mtr.",
+    "plinth_height": "0.45 mtr.",
+    "plinth_area": "90.6 Sq.m.",
     "total_number_of_items": 64,
     "seismic_zone": "I to IV and V",
-    "bearing_capacity": "10T/Sq.m and above"
+    "capacity": "10T/Sq.m. and above"
 }
